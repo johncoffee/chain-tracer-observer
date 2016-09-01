@@ -25,10 +25,13 @@ public class ClickOnStuff : MonoBehaviour {
 				}
 
 				GameObject canvas = GameObject.Find("Canvas");
-				GameObject card = (GameObject) Instantiate (cardPrefab);
-				card.transform.SetParent(canvas.transform, false);
+				GameObject go = (GameObject) Instantiate (cardPrefab, canvas.transform, false);
+				// go.transform.SetParent(canvas.transform, false);
 
-				currentOpenCard = card;
+				Card cardApi = go.GetComponent<Card>();
+				cardApi.Body = "Derp herp\nblabla\n stuff.....";
+
+				currentOpenCard = go;
 			}
 		}
 	

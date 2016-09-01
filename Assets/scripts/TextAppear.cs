@@ -9,7 +9,10 @@ public class TextAppear : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {		
-		var text = "Tx\n2016-07-05 21:17:58\nUnconfirmed";
+		
+	}
+
+	public void SetText(string text) {		
 		GetComponent<Text> ().text = "";
 		StartCoroutine (waitToStart(text));
 	}
