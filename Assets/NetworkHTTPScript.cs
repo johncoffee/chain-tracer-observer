@@ -5,10 +5,6 @@ using UnityEngine.Networking;
 public class NetworkHTTPScript : MonoBehaviour {
 
 	public string URL = "";
-
-	DownloadHandlerBuffer req = null;
-	UnityWebRequest request = null;
-
 	string jsonString = "";
 
 	void Start () {
