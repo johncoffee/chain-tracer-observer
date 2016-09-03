@@ -60,4 +60,8 @@ public class Record {
 	public string lng;
 	public string unregisterCost;
 	public string owner;
+
+	public override string ToString() {
+		return "Record with key " + key.ToString();
+	}
 }
