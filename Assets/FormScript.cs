@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FormScript : MonoBehaviour {
 
 	public string URL = "";
-	string jsonString = "";	
 
 	InputField[] fields;
 
@@ -22,10 +21,10 @@ public class FormScript : MonoBehaviour {
 //		}
 	}
 
-	void Submit() {
-		Record r = new Record();
+	public void Submit() {
+		var r = CollectValuesFromInputFields(fields);
 		var serialized = JsonUtility.ToJson(r);
-		StartCoroutine(Put(serialized));
+		StartCoroutine(PutJSON(URL, serialized));
 	}
 
 	Record CollectValuesFromInputFields(InputField[] textsFields) {
@@ -46,18 +45,19 @@ public class FormScript : MonoBehaviour {
 		return record;
 	}
 
-	IEnumerator Put(string url) {
-		var data = "";
+	IEnumerator PutJSON(string url, string data) {
 		UnityWebRequest www = UnityWebRequest.Put(url, data);
+		www.SetRequestHeader("Content-Type", "application/json");
 		yield return www.Send();
 
 		if (www.isError) {
-			Debug.Log(www.error);
+			Debug.LogWarning(www.error);
 		}
 		else {
 			// Show results as text
-			jsonString += www.downloadHandler.text;
-			www.downloadHandler.Dispose();
+			Debug.Log("Done PUTing. Response: " + www.downloadHandler.text);
 		}
+		www.downloadHandler.Dispose();		
 	}
+
 }
