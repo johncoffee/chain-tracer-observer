@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class FormScript : MonoBehaviour {
 
-	public string URL = "";
-
+	public string URL;
+	public string fieldsTag;
 	InputField[] fields;
 
 	void Start () {
-		fields = GameObject.FindObjectsOfType<InputField>();
+		fields = BootstrapFields(fieldsTag);
 		Debug.Log("found " + fields.Length + " x InputField");
 	}
 
-	void Update() {
-//		if (Input.GetKeyDown(KeyCode.A)) {
-//			var s = CollectValuesFromInputFields(fields);
-//			Debug.Log(s);		
-//		}
+	InputField[] BootstrapFields(string fieldsTag) {
+		GameObject[] tagged = GameObject.FindGameObjectsWithTag(fieldsTag);
+
+		InputField[] fields = new InputField[tagged.Length];
+		for (int i = 0; i < fields.Length; i++) {
+			fields[i] = tagged[i].GetComponent<InputField>();
+		}
+		return fields;
 	}
 
 	public void Submit() {
