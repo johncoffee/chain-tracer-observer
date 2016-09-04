@@ -57,7 +57,7 @@ function PolarToCartesian(polar:Vector2):Vector3
 
 function OnGUI()
 {
-Debug.Log(latStr + " " + lonStr);
+	//Debug.Log(latStr + " " + lonStr);
 	
    	xStr=GUI.TextField( Rect(10,Screen.height-40,50,30), xStr);	
 	float.TryParse(xStr,point.x);
@@ -94,17 +94,22 @@ Debug.Log(latStr + " " + lonStr);
     	
    	}
 
-   		
 	
 }
 
 function Update()
 {
 	//set the euler arrow object's rotation to our polar coordinates...
-    eulerArrow.rotation=Quaternion.Euler(polar.x,polar.y,0);
+	if (eulerArrow)
+    	eulerArrow.rotation=Quaternion.Euler(polar.x,polar.y,0);
     //Debug.Log(polar.x + " " + polar.y + " ");
 	//... and set the point indicator's position to our point vector.
-	pointIndicator.position=point;
+	if (pointIndicator)
+		pointIndicator.position=point;
 }
 
+function UpdateArrow(x, y) {
+	
+	eulerArrow.rotation=Quaternion.Euler(polar.x,polar.y,0);
+}
 

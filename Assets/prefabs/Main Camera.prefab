@@ -1,42 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &131396
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000011946418350}
+  m_IsPrefabParent: 1
+--- !u!1 &1000011946418350
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 411678}
-  - 20: {fileID: 2037432}
-  - 124: {fileID: 12416596}
-  - 92: {fileID: 9290998}
-  - 81: {fileID: 8132432}
+  - 4: {fileID: 4000010263659324}
+  - 20: {fileID: 20000013330475122}
+  - 92: {fileID: 92000013175691064}
+  - 124: {fileID: 124000010611924134}
+  - 81: {fileID: 81000010692941558}
+  - 114: {fileID: 114000012015343042}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: Main Camera
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &411678
+--- !u!4 &4000010263659324
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1000011946418350}
+  m_LocalRotation: {x: -0, y: 0.99975306, z: -0, w: 0.022223784}
+  m_LocalPosition: {x: 0, y: 10, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 177.52701, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!20 &2037432
+--- !u!20 &20000013330475122
 Camera:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131396}
+  m_GameObject: {fileID: 1000011946418350}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -52,7 +65,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -65,35 +78,41 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!81 &8132432
+--- !u!81 &81000010692941558
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131396}
+  m_GameObject: {fileID: 1000011946418350}
   m_Enabled: 1
---- !u!92 &9290998
+--- !u!92 &92000013175691064
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131396}
+  m_GameObject: {fileID: 1000011946418350}
   m_Enabled: 1
---- !u!124 &12416596
+--- !u!114 &114000012015343042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011946418350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27acebc9ad1110f6d00074c88d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  distance: 44
+  xSpeed: 100
+  ySpeed: 50
+  yMinLimit: -20
+  yMaxLimit: 80
+--- !u!124 &124000010611924134
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131396}
+  m_GameObject: {fileID: 1000011946418350}
   m_Enabled: 1
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 131396}
-  m_IsPrefabParent: 1

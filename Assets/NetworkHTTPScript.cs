@@ -4,24 +4,20 @@ using UnityEngine.Networking;
 
 public class NetworkHTTPScript : MonoBehaviour {
 
-	public string URL = "";
 	string jsonString = "";
+	string msgToCall = "";
 
-	void Start () {
-		Download();
-	}
-
-	void Download() {
+	public void FetchRecords(string URL, string callbackName) {
+		msgToCall = callbackName;
 		StartCoroutine(GetText(URL));
 	}
 
-	void Update() {
-		if (Input.GetKeyDown(KeyCode.Space))
-			Download();
-
+	void Update() {		
 		if (jsonString.Length > 0) {
-			ProcessJsonString(jsonString);
+			var records = ProcessJsonString(jsonString);
+			SendMessage(msgToCall, records);
 			jsonString = "";
+			msgToCall = "";
 		}
 	}
 
