@@ -7,19 +7,20 @@ public class MarkersManager : MonoBehaviour {
 	public string url = "http://localhost:3000/records?format=sjon";
 	public GameObject markerPrefab;
 	public List<Marker> markers = new List<Marker>(); 
-	public bool polling = false;
-	public bool Polling {
-		get {return polling;}
+
+	bool isPolling = false;
+	public bool IsPolling {
+		get {return isPolling;}
 		set {			
-			if (value && !polling) {
+			if (value && !isPolling) {
 				StartPolling();
 			}
-			polling = value;
+			isPolling = value;
 		}
 	}
 
 	void Start () {
-		Polling = true;
+//		Polling = true;
 	}
 
 	void FetchRecords() {
@@ -53,13 +54,13 @@ public class MarkersManager : MonoBehaviour {
 	}
 
 	void StartPolling() {
-		StartCoroutine(Poll());
+		StartCoroutine(WaitAndFetch());
 	}
 
-	IEnumerator Poll() {		
+	IEnumerator WaitAndFetch() {		
 		yield return new WaitForSeconds(5);
 		FetchRecords();
-		if (polling) {
+		if (isPolling) {
 			StartPolling();
 		}
 	}
