@@ -21,7 +21,6 @@ GameObject:
   - 4: {fileID: 4000013524560432}
   - 114: {fileID: 114000010805972090}
   - 114: {fileID: 114000014248405408}
-  - 114: {fileID: 114000013199415922}
   m_Layer: 0
   m_Name: Marker2
   m_TagString: Untagged
@@ -275,21 +274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eulerArrow: {fileID: 4000011038842472}
---- !u!114 &114000013199415922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010011372812}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1fa44d2f9e36024c8c12753293931e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  point: {x: 0, y: 0, z: 0}
-  polar: {x: 0, y: 0}
-  eulerArrow: {fileID: 4000011038842472}
-  pointIndicator: {fileID: 4000013995167992}
 --- !u!114 &114000014248405408
 MonoBehaviour:
   m_ObjectHideFlags: 1

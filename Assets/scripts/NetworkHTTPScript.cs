@@ -29,7 +29,7 @@ public class NetworkHTTPScript : MonoBehaviour {
 			records[i] = JsonUtility.FromJson<Record>(entities[i]);
 		}
 
-		Debug.Log(records[0].owner);
+		Debug.Assert(records.Length > 0 && records[0].owner.Length > 0, " key should be string");
 
 		return records;
 	}
