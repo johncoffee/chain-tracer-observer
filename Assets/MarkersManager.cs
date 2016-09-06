@@ -29,15 +29,19 @@ public class MarkersManager : MonoBehaviour {
 	}
 
 	public void OnRecords(Record[] updatedRecords) {
+		MergeRecords(updatedRecords);
+	}
+
+	public void MergeRecords(Record[] records) {
 		// update existing
 
-		for (int j = 0; j < updatedRecords.Length; j++) {													
-			Record newRecord = updatedRecords[j];
+		for (int j = 0; j < records.Length; j++) {													
+			Record newRecord = records[j];
 
-			Marker marker = GetMarkerByKey(newRecord.key, markers);
+			Marker marker = GetMarkerByKey(newRecord, markers);
 			if (marker == null) {
 				Debug.Log("Added " + newRecord);
-				AddFromRecord(newRecord);	
+				Add(newRecord);	
 			}
 			else {
 				Debug.Log("Updated " + newRecord);
@@ -46,7 +50,7 @@ public class MarkersManager : MonoBehaviour {
 		}
 	}
 
-	void Update() {
+	void Update() {		
 		if (Input.GetKeyDown(KeyCode.F5)) {
 			Debug.Log("updating...");
 			FetchRecords();
@@ -65,10 +69,10 @@ public class MarkersManager : MonoBehaviour {
 		}
 	}
 
-	public static Marker GetMarkerByKey(string key, List<Marker> markers) {
+	public static Marker GetMarkerByKey(Record record, List<Marker> markers) {
 		for (int i = 0; i < markers.Count; i++) {			
 			Marker marker = markers[i];
-			if (key == marker.Record.key) {
+			if (record.key == marker.Record.key) {
 				return marker;
 			}
 		}
@@ -76,11 +80,11 @@ public class MarkersManager : MonoBehaviour {
 		return null;
 	}
 
-	public void AddFromRecord(Record record) {
+	public void Add(Record record) {
 		GameObject go = (GameObject)Instantiate(markerPrefab);
 		var marker = go.GetComponent<Marker>();
 		marker.Record = record;
 		markers.Add(marker);	
 	}
-
+		
 }
