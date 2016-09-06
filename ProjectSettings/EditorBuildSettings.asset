@@ -6,4 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/client ui/client ui.unity
+    path: Assets/mobile client/mobile client.unity

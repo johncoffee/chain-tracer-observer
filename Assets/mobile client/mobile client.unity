@@ -307,7 +307,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 159874355}
   - 114: {fileID: 159874354}
-  - 114: {fileID: 159874356}
   m_Layer: 0
   m_Name: FormScript
   m_TagString: Untagged
@@ -342,17 +341,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &159874356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 159874353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d79f80fea52244ee8bc7c423b1051e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &210744385
 GameObject:
   m_ObjectHideFlags: 0
