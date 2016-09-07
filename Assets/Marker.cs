@@ -33,7 +33,7 @@ public class Marker : MonoBehaviour {
 	void UpdateEulerArrow (string lat, string lng) {
 		float latFloat = 0f, lngFloat = 0f;
 		if (float.TryParse(lat, out latFloat) && float.TryParse(lng, out lngFloat) ) {
-			UpdateEulerArrow(latFloat, lngFloat);
+			UpdateEulerArrow(latFloat * -1f, lngFloat * -1f);
 		}
 		else {
 			Debug.LogWarning("Failed parsing [" + lat + " , " + lng + "]");
