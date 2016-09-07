@@ -5,9 +5,11 @@ using UnityEngine.Networking;
 public class DebugMarkersMovement : MonoBehaviour {
 
 	public MarkersManager mm = null;
+	public float delay = 1f;
 
 	void Start() {
 		StartSpawning();
+
 	}
 
 	public void Blarh ()
@@ -41,7 +43,7 @@ public class DebugMarkersMovement : MonoBehaviour {
 	}
 
 	IEnumerator WaitAndSpawn() {				
-		yield return new WaitForSeconds(.66f);
+		yield return new WaitForSeconds(delay);
 		Blarh();
 		StartSpawning();
 //		FetchRecords();
