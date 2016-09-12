@@ -21,7 +21,7 @@ public class DebugMarkersMovement : MonoBehaviour {
 	public void Blarh ()
 	{		
 		if (Random.value > .5f && mm.markers.Count >= 1) {
-			Debug.Log("update");
+//			Debug.Log("update");
 			var m = mm.markers[(int)Mathf.Floor(Random.value * mm.markers.Count)];
 			var r = m.Record;
 			r.lat = ( -90f + (Random.value * 180f) ).ToString();
@@ -29,7 +29,7 @@ public class DebugMarkersMovement : MonoBehaviour {
 			m.Record = r;
 		}
 		else if (mm.markers.Count < maxMarkers) {
-			Debug.Log("add");
+//			Debug.Log("add");
 			var r = new Record();
 			r.key = Random.value.ToString();
 			r.lat = ( -90f + (Random.value * 180f) ).ToString();
