@@ -54,12 +54,13 @@ public class FormScript : MonoBehaviour {
 	public static Record CollectValuesFromInputFields(InputField[] textsFields) {
 		var record = new Record();
 		var recordType = record.GetType();
+
 		for (int i = 0; i < textsFields.Length; i++) {
-			string name = textsFields[i].gameObject.name;
-			var prop = recordType.GetField(name);
-			if (prop != null) {
+			string name = textsFields[i].gameObject.name;		
+			var fieldInfo = recordType.GetField(name);
+			if (fieldInfo != null) {
 				var text = textsFields[i].text;				
-				prop.SetValue(record, text);
+				fieldInfo.SetValue(record, text);
 			}
 			else {
 				Debug.LogWarning("Did not set member " + name);
@@ -73,6 +74,7 @@ public class FormScript : MonoBehaviour {
 
 	public static IEnumerator PutJSON(string url, string data) {
 		UnityWebRequest www = UnityWebRequest.Put(url, data);
+		Debug.Log(data);
 		www.SetRequestHeader("Content-Type", "application/json");
 		yield return www.Send();
 

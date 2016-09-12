@@ -52,6 +52,9 @@ public class MarkersManager : MonoBehaviour {
 			}
 			else {
 //				Debug.Log("Updated " + newRecord);
+				if (Marker.DiffLocation(newRecord, marker.Record)) {
+				}
+				SendMessage(MarkerEffects.Events.Moved);
 				marker.Record = newRecord;
 			}
 		}
@@ -92,7 +95,7 @@ public class MarkersManager : MonoBehaviour {
 		var marker = go.GetComponent<Marker>();
 		marker.Record = record;
 		markers.Add(marker);	
-		SendMessage("MarkerAdded", marker);
+		SendMessage(MarkerEffects.Events.Added);
 	}
 
 	public void Add (Record[] records) {
@@ -101,6 +104,11 @@ public class MarkersManager : MonoBehaviour {
 		}	
 	}
 
+	public void RemoveAt(int index) {
+		Destroy(markers[index].gameObject);
+		markers.RemoveAt(index);
+		SendMessage(MarkerEffects.Events.Removed);
+	}
 
 	public void Clear() {
 		for (int i = markers.Count-1; i >= 0; i--) {			
@@ -108,5 +116,7 @@ public class MarkersManager : MonoBehaviour {
 			Destroy(marker.gameObject);
 		}
 		markers.Clear();
+
+		SendMessage(MarkerEffects.Events.Removed);
 	}
 }

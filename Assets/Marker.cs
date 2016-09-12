@@ -17,7 +17,7 @@ public class Marker : MonoBehaviour {
 		
 	public Record Record {
 		set {
-			records.Add(value);
+			records.Add(Record.Clone(value));
 			UpdateViewModel(value);
 		}
 		get {
@@ -25,10 +25,7 @@ public class Marker : MonoBehaviour {
 		}
 	}
 
-	void UpdateViewModel(Record record) {
-		if (this.records.Count > 0 && (record.lat != this.Record.lat || record.lng != this.Record.lng)) {
-			SendMessage("RecordMoved");
-		}
+	void UpdateViewModel(Record record) {		
 		UpdateEulerArrow(record.lat, record.lng);
 	}
 
@@ -45,4 +42,8 @@ public class Marker : MonoBehaviour {
 			Debug.LogWarning("Failed parsing [" + lat + " , " + lng + "]");
 		}
 	}
-}
+
+	public static bool DiffLocation(Record r1, Record r2) {
+		return (r1.lat != r2.lat || r1.lng != r2.lng);
+	}
+ }
