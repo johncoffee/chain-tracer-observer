@@ -85,6 +85,7 @@ public class MarkersManager : MonoBehaviour {
 		var marker = go.GetComponent<Marker>();
 		marker.Record = record;
 		markers.Add(marker);	
+		SendMessage("MarkerAdded", marker);
 	}
 		
 }

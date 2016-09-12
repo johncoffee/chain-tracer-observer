@@ -18,22 +18,28 @@ public class ClickOnStuff : MonoBehaviour {
 			RaycastHit hit = new RaycastHit();
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-			if (Physics.Raycast(ray, out hit, 100f)) {
-
-				if (currentOpenCard) {
-					Destroy (currentOpenCard);
+			if (Physics.Raycast(ray, out hit, 10000f)) {
+				var go = hit.collider.gameObject;
+				if (go.tag == "stick") {
+					var record = go.GetComponentInParent<Marker>().Record;
+					var str = string.Format("Lat {0}\n Lng {1}\n{2}", record.lat, record.lng, record.time);
+					OpenCard(str);
 				}
-
-				GameObject canvas = GameObject.Find("Canvas");
-				GameObject go = (GameObject) Instantiate (cardPrefab, canvas.transform, false);
-				// go.transform.SetParent(canvas.transform, false);
-
-				Card cardApi = go.GetComponent<Card>();
-				cardApi.Body = "Derp herp\nblabla\n stuff.....";
-
-				currentOpenCard = go;
 			}
+		}	
+	}
+
+	public void OpenCard (string body) {
+		if (currentOpenCard != null) {
+			Destroy (currentOpenCard);
 		}
-	
+
+		GameObject canvas = GameObject.Find("Canvas");
+		GameObject go = (GameObject) Instantiate (cardPrefab, canvas.transform, false);
+
+		Card cardApi = go.GetComponent<Card>();
+		cardApi.Body = body;
+
+		currentOpenCard = go;
 	}
 }

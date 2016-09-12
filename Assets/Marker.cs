@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Reflection;
+using System.Collections.Generic;
 
 public class Marker : MonoBehaviour {
 	
-	Record record = null;
+	List<Record> record = new List<Record>();
 
 	public Transform eulerArrow;
 		
@@ -12,17 +13,16 @@ public class Marker : MonoBehaviour {
 			UpdateViewModel(value);
 		}
 		get {
-			return record;
+			return record[record.Count-1];
 		}
 	}
 
 	void UpdateViewModel(Record record) {
-		if (this.record != null && (record.lat != this.record.lat || record.lng != this.record.lng)) {
+		if (this.record.Count > 0 && (record.lat != this.Record.lat || record.lng != this.Record.lng)) {
 			SendMessage("RecordMoved");
 		}
 		UpdateEulerArrow(record.lat, record.lng);
-
-		this.record = record;
+		this.record.Add(record);
 	}
 
 	void UpdateEulerArrow (float lat, float lng) {

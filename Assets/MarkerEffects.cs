@@ -3,9 +3,8 @@ using System.Collections;
 
 public class MarkerEffects : MonoBehaviour {
 
-
-	public void Added(Marker marker) {
-
+	public void MarkerAdded(Marker marker) {
+		Camera.main.GetComponent<CameraShake>().Shake();
 	}
 
 	public void Updated(Marker marker) {

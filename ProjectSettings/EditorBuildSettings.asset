@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/mobile client/mobile client.unity
   - enabled: 1
     path: Assets/observer client/observer.unity
-  - enabled: 1
-    path: Assets/effects.unity
+  - enabled: 0
+    path: Assets/effect scripts/effects.unity
