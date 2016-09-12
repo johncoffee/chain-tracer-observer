@@ -8,6 +8,7 @@ public class MarkersManager : MonoBehaviour {
 	public GameObject markerPrefab;
 	public List<Marker> markers = new List<Marker>(); 
 	public KeyCode updateKey;
+	public float pollDelay = 3.33f;
 
 	public bool startPolling = false;
 
@@ -47,15 +48,17 @@ public class MarkersManager : MonoBehaviour {
 
 			Marker marker = GetMarkerByKey(newRecord, markers);
 			if (marker == null) {
-//				Debug.Log("Added " + newRecord);
+				Debug.Log("Added " + newRecord);
 				Add(newRecord);	
 			}
 			else {
-//				Debug.Log("Updated " + newRecord);
+				Debug.Log("Updated ");
 				if (Marker.DiffLocation(newRecord, marker.Record)) {
+					Debug.Log(marker.Record);
+					Debug.Log(newRecord);
+					marker.Record = newRecord;
+					SendMessage(MarkerEffects.Events.Moved);
 				}
-				SendMessage(MarkerEffects.Events.Moved);
-				marker.Record = newRecord;
 			}
 		}
 	}
@@ -72,7 +75,7 @@ public class MarkersManager : MonoBehaviour {
 	}
 
 	IEnumerator WaitAndFetch() {		
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(pollDelay);
 		FetchRecords();
 		if (isPolling) {
 			StartPolling();

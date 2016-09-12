@@ -47,3 +47,26 @@ public class Marker : MonoBehaviour {
 		return (r1.lat != r2.lat || r1.lng != r2.lng);
 	}
  }
+
+
+public class Record {
+	public string key = "-1";
+	public string time;
+	public string lat = "";
+	public string lng = "";
+	public string owner;
+
+	public static Record Clone(Record r) {
+		var r2 = new Record();
+		r2.key = r.key;
+		r2.lat = r.lat;
+		r2.lng = r.lng;
+		r2.time = r.time;
+		r2.owner = r.owner;
+		return r2;
+	}
+
+	public override string ToString() {
+		return "Key " + key.ToString() + ". [" + lat +", " + lng + "]";
+	}
+}

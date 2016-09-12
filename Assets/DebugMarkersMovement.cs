@@ -10,12 +10,6 @@ public class DebugMarkersMovement : MonoBehaviour {
 
 	void Start() {
 		StartSpawning();
-
-		var r = new Record();
-		r.key = Random.value.ToString();
-		r.lat = ( 55.66f).ToString();
-		r.lng = ( 12.54f ).ToString();
-		mm.Add(r);
 	}
 
 	public void Blarh ()
@@ -29,7 +23,7 @@ public class DebugMarkersMovement : MonoBehaviour {
 			m.Record = r;
 			MarkerEffects.Moved();
 		}
-		else if (Random.value < 0.02f && mm.markers.Count >= 1) {
+		else if (Random.value < 0.02f && mm.markers.Count > 1) {
 			mm.RemoveAt((int)Mathf.Floor( Random.value * mm.markers.Count));
 			MarkerEffects.Removed();
 		}
