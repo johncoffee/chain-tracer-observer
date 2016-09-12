@@ -6,24 +6,30 @@ public class DebugMarkersMovement : MonoBehaviour {
 
 	public MarkersManager mm = null;
 	public float delay = 1f;
+	public int maxMarkers = 30;
 
 	void Start() {
 		StartSpawning();
 
+		var r = new Record();
+		r.key = Random.value.ToString();
+		r.lat = ( 55.66f).ToString();
+		r.lng = ( 12.54f ).ToString();
+		mm.Add(r);
 	}
 
 	public void Blarh ()
 	{		
-		if (Random.value > 0.5f && mm.markers.Count > 1 && mm.markers.Count < 30) {
-//			Debug.Log("update");
+		if (Random.value > .5f && mm.markers.Count >= 1) {
+			Debug.Log("update");
 			var m = mm.markers[(int)Mathf.Floor(Random.value * mm.markers.Count)];
 			var r = m.Record;
 			r.lat = ( -90f + (Random.value * 180f) ).ToString();
 			r.lng = ( -180f + (Random.value * 180f * 2f) ).ToString();
 			m.Record = r;
 		}
-		else {
-//			Debug.Log("add");
+		else if (mm.markers.Count < maxMarkers) {
+			Debug.Log("add");
 			var r = new Record();
 			r.key = Random.value.ToString();
 			r.lat = ( -90f + (Random.value * 180f) ).ToString();

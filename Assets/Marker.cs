@@ -1,32 +1,38 @@
 ﻿using UnityEngine;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Marker : MonoBehaviour {
 	
-	List<Record> record = new List<Record>();
+	List<Record> records = new List<Record>();
+
+	public List<Record> Records {
+		get {
+			return records;
+		}
+	}
 
 	public Transform eulerArrow;
 		
 	public Record Record {
 		set {
+			records.Add(value);
 			UpdateViewModel(value);
 		}
 		get {
-			return record[record.Count-1];
+			return records[records.Count-1];
 		}
 	}
 
 	void UpdateViewModel(Record record) {
-		if (this.record.Count > 0 && (record.lat != this.Record.lat || record.lng != this.Record.lng)) {
+		if (this.records.Count > 0 && (record.lat != this.Record.lat || record.lng != this.Record.lng)) {
 			SendMessage("RecordMoved");
 		}
 		UpdateEulerArrow(record.lat, record.lng);
-		this.record.Add(record);
 	}
 
 	void UpdateEulerArrow (float lat, float lng) {
-		// Fix North is negative
 		eulerArrow.rotation = Quaternion.Euler(lat, lng, 0f);
 	}
 

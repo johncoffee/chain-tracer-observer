@@ -7,6 +7,9 @@ public class MarkersManager : MonoBehaviour {
 	public string url = "http://localhost:3000/records?format=sjon";
 	public GameObject markerPrefab;
 	public List<Marker> markers = new List<Marker>(); 
+	public KeyCode updateKey;
+
+	public bool startPolling = false;
 
 	bool isPolling = false;
 	public bool IsPolling {
@@ -20,7 +23,11 @@ public class MarkersManager : MonoBehaviour {
 	}
 
 	void Start () {
-//		Polling = true;
+		if (startPolling) {
+			Debug.Log("updating...");
+			FetchRecords();
+			IsPolling = true;
+		}
 	}
 
 	void FetchRecords() {
@@ -40,18 +47,18 @@ public class MarkersManager : MonoBehaviour {
 
 			Marker marker = GetMarkerByKey(newRecord, markers);
 			if (marker == null) {
-				Debug.Log("Added " + newRecord);
+//				Debug.Log("Added " + newRecord);
 				Add(newRecord);	
 			}
 			else {
-				Debug.Log("Updated " + newRecord);
+//				Debug.Log("Updated " + newRecord);
 				marker.Record = newRecord;
 			}
 		}
 	}
 
 	void Update() {		
-		if (Input.GetKeyDown(KeyCode.F5)) {
+		if (Input.GetKeyDown(updateKey)) {
 			Debug.Log("updating...");
 			FetchRecords();
 		}
@@ -87,5 +94,19 @@ public class MarkersManager : MonoBehaviour {
 		markers.Add(marker);	
 		SendMessage("MarkerAdded", marker);
 	}
-		
+
+	public void Add (Record[] records) {
+		for (int i = 0; i < records.Length; i++) {
+			Add(records[i]);	
+		}	
+	}
+
+
+	public void Clear() {
+		for (int i = markers.Count-1; i >= 0; i--) {			
+			Marker marker = markers[i];
+			Destroy(marker.gameObject);
+		}
+		markers.Clear();
+	}
 }

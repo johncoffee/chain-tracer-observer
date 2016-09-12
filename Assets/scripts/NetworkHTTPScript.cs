@@ -49,7 +49,7 @@ public class NetworkHTTPScript : MonoBehaviour {
 	}
 }
 
-public class Record {
+public struct Record {
 	public string key;
 	public string time;
 	public string lat;
