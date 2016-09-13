@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventName: move
-  _eventID: 0
+  _eventID: 3357649
   _overrideEventTriggerAction: 0
   _overrideParameters:
     _overrideIncomingEventAction: 0
@@ -1285,6 +1285,7 @@ GameObject:
   - 224: {fileID: 1499121256}
   - 222: {fileID: 1499121258}
   - 114: {fileID: 1499121257}
+  - 114: {fileID: 1499121259}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1349,6 +1350,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1499121255}
+--- !u!114 &1499121259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1499121255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716e4614838964af79b47cc2ec7bba0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1691173101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1591,8 @@ MonoBehaviour:
     type: 2}
   markers: []
   updateKey: 286
-  startPolling: 0
+  pollDelay: 3.33
+  startPolling: 1
 --- !u!4 &1777050034
 Transform:
   m_ObjectHideFlags: 0
@@ -1680,6 +1693,7 @@ MonoBehaviour:
     type: 2}
   markers: []
   updateKey: 0
+  pollDelay: 3.33
   startPolling: 0
 --- !u!114 &1818046263
 MonoBehaviour:
@@ -1783,7 +1797,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2146960580}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f70d0228a5b64dc0a0deaf1dfda3af4, type: 3}
   m_Name: 

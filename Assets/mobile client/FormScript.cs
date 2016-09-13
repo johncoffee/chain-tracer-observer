@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class FormScript : MonoBehaviour {
+
+
+public class FormScript : BaseForm {
 
 	public Toggle updateToggle = null;
 	public InputField hostInput = null;
+
 
 	public string fieldsTag;
 	InputField[] fields;
@@ -32,14 +35,12 @@ public class FormScript : MonoBehaviour {
 		var serialized = JsonUtility.ToJson(record);
 
 		var url = (updateToggle != null && updateToggle.isOn) ? URL + "/" + record.key : URL;
-		StartCoroutine(FormScript.PutJSON(url, serialized));
+		StartCoroutine(PutJSON(url, serialized));
 	}
 
 
 
-
 	// helpers
-
 	public static InputField[] BootstrapFields(string fieldsTag) {
 		GameObject[] tagged = GameObject.FindGameObjectsWithTag(fieldsTag);
 
@@ -69,55 +70,6 @@ public class FormScript : MonoBehaviour {
 
 		return record;
 	}
-
-
-
-	public static IEnumerator PutJSON(string url, string data) {
-		UnityWebRequest www = UnityWebRequest.Put(url, data);
-		Debug.Log(data);
-		www.SetRequestHeader("Content-Type", "application/json");
-		yield return www.Send();
-
-		if (www.isError) {
-			Debug.LogWarning(www.error);
-		}
-		else {
-			// Show results as text
-			Debug.Log("Done PUT. Response: " + www.downloadHandler.text);
-		}
-		www.downloadHandler.Dispose();		
-	}
-
-	// holy f--- it's complicated to POST
-
-	//	static byte[] GetBytes(string str)
-	//	{
-	//		byte[] bytes = new byte[str.Length * sizeof(char)];
-	//		System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
-	//		return bytes;
-	//	}
-	//
-	//	IEnumerator PostJSON(string url, string data) {
-	//		var www = new UnityWebRequest(url);
-	//		www.uploadHandler = new UploadHandlerRaw(GetBytes(data));
-	//		www.downloadHandler = new DownloadHandlerBuffer();
-	//		www.method = UnityWebRequest.kHttpVerbPOST;
-	//
-	//		www.SetRequestHeader("Content-Type", "application/json");
-	//
-	//		Debug.Log("POST data", www.ToString());
-	//
-	//		yield return www.Send();
-	//
-	//		if (www.isError) {
-	//			Debug.LogWarning(www.error);
-	//		}
-	//		else {
-	//			// Show results as text
-	//			Debug.Log("Done POST. Response: " + www.downloadHandler.text);
-	//		}
-	//		www.downloadHandler.Dispose();		
-	//	}
 
 }
 	
