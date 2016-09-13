@@ -18,8 +18,8 @@ public class DebugMarkersMovement : MonoBehaviour {
 //			Debug.Log("update");
 			var m = mm.markers[(int)Mathf.Floor(Random.value * mm.markers.Count)];
 			var r = Record.Clone(m.Record);
-			r.lat = ( -90f + (Random.value * 180f) ).ToString();
-			r.lng = ( -180f + (Random.value * 180f * 2f) ).ToString();
+			r.lat = ( float.Parse(r.lat) + 2.1f ).ToString();
+			r.lng = ( float.Parse(r.lng) + 1.4f ).ToString();
 			m.Record = r;
 			MarkerEffects.Moved();
 		}
