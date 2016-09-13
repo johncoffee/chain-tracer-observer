@@ -6,6 +6,9 @@ TagManager:
   tags:
   - earth
   - form_register
+  - stick
+  - form_transfer
+  - loading
   layers:
   - Default
   - TransparentFX
