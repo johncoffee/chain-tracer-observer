@@ -35,8 +35,10 @@ public class ClickOnStuff : MonoBehaviour {
 	}
 
 	public void CreateTrail (Marker marker) {
-		mm.Clear();
-		mm.Add(marker.Records.ToArray());
+		if (marker.Records.Count > 1) {
+			mm.Clear();
+			mm.Add(marker.Records.ToArray());
+		}
 	}
 
 	public void OpenCard (string body) {

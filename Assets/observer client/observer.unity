@@ -1591,7 +1591,7 @@ MonoBehaviour:
     type: 2}
   markers: []
   updateKey: 286
-  pollDelay: 3.33
+  pollDelay: 10
   startPolling: 1
 --- !u!4 &1777050034
 Transform:
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8222f128752d847db92b2d129e533396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxOn: 1
+  sfxOn: 0
 --- !u!1 &2101365406
 GameObject:
   m_ObjectHideFlags: 0
